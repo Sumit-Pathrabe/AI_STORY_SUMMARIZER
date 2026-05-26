@@ -27,3 +27,8 @@ generate_story(space_prompt)
 horror_prompt = "At midnight, the abandoned house suddenly started"
 
 generate_story(horror_prompt)
+
+# Motivational Paragraph
+motivation_prompt = "Success in life comes to those who"
+
+generate_story(motivation_prompt)

@@ -18,3 +18,7 @@ def generate_story(prompt):
     print("\nGenerated Text:\n")
     print(result[0]["generated_text"])
     print("\n" + "="*60)
+# Space Story
+space_prompt = "In the year 2050, humans discovered a new planet"
+
+generate_story(space_prompt)

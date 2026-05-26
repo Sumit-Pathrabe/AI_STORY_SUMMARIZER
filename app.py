@@ -22,3 +22,8 @@ def generate_story(prompt):
 space_prompt = "In the year 2050, humans discovered a new planet"
 
 generate_story(space_prompt)
+
+# Horror Story
+horror_prompt = "At midnight, the abandoned house suddenly started"
+
+generate_story(horror_prompt)

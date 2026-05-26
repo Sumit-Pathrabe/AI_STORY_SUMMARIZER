@@ -1,34 +1,37 @@
 from transformers import pipeline
+import gradio as gr
 
-# Load GPT-2 text generation pipeline
+# Load GPT-2 model
 generator = pipeline(
     "text-generation",
     model="gpt2"
 )
-# Function to generate text
+
+# Function for story generation
 def generate_story(prompt):
 
     result = generator(
         prompt,
         max_length=120,
         num_return_sequences=1,
-        temperature=0.8
+        temperature=0.8,
+        truncation=True
     )
 
-    print("\nGenerated Text:\n")
-    print(result[0]["generated_text"])
-    print("\n" + "="*60)
-# Space Story
-space_prompt = "In the year 2050, humans discovered a new planet"
+    return result[0]["generated_text"]
 
-generate_story(space_prompt)
 
-# Horror Story
-horror_prompt = "At midnight, the abandoned house suddenly started"
+# Gradio Interface
+interface = gr.Interface(
+    fn=generate_story,
+    inputs=gr.Textbox(
+        lines=3,
+        placeholder="Enter your story prompt here..."
+    ),
+    outputs="text",
+    title="AI Story Generator",
+    description="Generate stories using GPT-2"
+)
 
-generate_story(horror_prompt)
-
-# Motivational Paragraph
-motivation_prompt = "Success in life comes to those who"
-
-generate_story(motivation_prompt)
+# Launch App
+interface.launch()
